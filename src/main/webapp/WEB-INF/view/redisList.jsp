@@ -32,7 +32,7 @@
 				<td>${a.id}</td>
 				<td>${a.name}</td>
 				<td>${a.price}</td>
-				<td>${a.soldOut}</td>
+				<td>${a.soldOut}%</td>
 			</tr>
 		</c:forEach>
 

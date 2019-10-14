@@ -103,15 +103,6 @@ public class MTest {
 			redisTemplate.opsForList().leftPush(LIST_TAG, json);
 			redisTemplate.opsForZSet().add(ZSET_TAG, json, goods.getSoldOut());
 		}
-
-		//按已售百分比倒序排序
-		Collections.sort(list, new Comparator<Goods>() {
-
-			@Override
-			public int compare(Goods o1, Goods o2) {
-				return o2.getSoldOut() - o1.getSoldOut();
-			}
-		});
 		
 		Set<String> set = redisTemplate.opsForZSet().reverseRange(ZSET_TAG, 0, 9);
 		Iterator<String> iterator = set.iterator();
@@ -122,10 +113,22 @@ public class MTest {
 		
 	}
 
+	/**
+	 * 判断str是否全是数字
+	 * 
+	 * @param str
+	 * @return
+	 */
 	public static boolean isNumber(String str) {
 		return str.matches("[0-9]*");
 	}
 
+	/**
+	 * 判断text是否为空
+	 * 
+	 * @param text
+	 * @return
+	 */
 	private static boolean hasText(String text) {
 		return StringUtils.isEmpty(text);
 	}
